@@ -66,14 +66,12 @@ class _MenuState extends State<Menu> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        // showSelectedLabels: true,
         type: BottomNavigationBarType.fixed,
-        showUnselectedLabels: true,
+        selectedItemColor: const Color(0xFF2261BC),
+        unselectedItemColor: const Color(0xFF9F9F9F),
         backgroundColor: const Color(0xFF0c0c0c),
-        selectedLabelStyle:
-            const TextStyle(color: Color(0xFF9F9F9F), fontSize: 10),
-        unselectedLabelStyle:
-            const TextStyle(color: Color(0xFFD54545), fontSize: 10),
+        selectedLabelStyle: const TextStyle(fontSize: 10),
+        unselectedLabelStyle: const TextStyle(fontSize: 10),
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: SvgPicture.asset("assets/icon/airplane.svg",
@@ -112,7 +110,6 @@ class _MenuState extends State<Menu> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.black,
         onTap: _onItemTapped,
       ),
     );
