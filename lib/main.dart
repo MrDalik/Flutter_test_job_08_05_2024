@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_test_job_08_05_2024/pages/main_page.dart';
 
 void main() => runApp(const BottomNavigationBarExampleApp());
 
@@ -27,14 +28,7 @@ class _MenuState extends State<Menu> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
-    Column(
-      children: [
-        Text(
-          'Index 0: Home',
-          style: optionStyle,
-        ),
-      ],
-    ),
+    MainPage(),
     Text(
       'Пустота',
       style: optionStyle,
@@ -74,7 +68,7 @@ class _MenuState extends State<Menu> {
         unselectedLabelStyle: const TextStyle(fontSize: 10),
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: SvgPicture.asset("assets/icon/airplane.svg",
+            icon: SvgPicture.asset("assets/icon/flights.svg",
                 colorFilter: ColorFilter.mode(
                     _selectedIndex == 0 ? const Color(0xFF2261BC):const Color(0xff5E5F61),
                     BlendMode.srcIn)),
