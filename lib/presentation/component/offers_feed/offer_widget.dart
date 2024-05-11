@@ -12,6 +12,7 @@ class OfferWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Image.asset(
           'assets/jpg/offer_1.jpg',
@@ -37,7 +38,7 @@ class OfferWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SvgPicture.asset(
-              ' assets/icon/flights.svg',
+              'assets/icon/flights.svg',
               width: 24,
               height: 24,
               colorFilter: const ColorFilter.mode(

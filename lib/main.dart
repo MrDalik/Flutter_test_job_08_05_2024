@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_test_job_08_05_2024/app_provider.dart';
 import 'package:flutter_test_job_08_05_2024/presentation/pages/main_page.dart';
 
 void main() => runApp(const BottomNavigationBarExampleApp());
@@ -9,9 +10,11 @@ class BottomNavigationBarExampleApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(scaffoldBackgroundColor: const Color(0x000c0c0c)),
-      home: const Menu(),
+    return AppProvider(
+      builder: (context) => MaterialApp(
+        theme: ThemeData(scaffoldBackgroundColor: const Color(0x000c0c0c)),
+        home: const Menu(),
+      ),
     );
   }
 }

@@ -14,14 +14,17 @@ class OffersComponent extends StatelessWidget {
     // todo обработать загрузку и ошибки
     return BlocProvider(
       create: (context) => OfferCubit(context.read<TicketRepository>()),
-      child: BlocBuilder<OfferCubit, BaseState<List<Offer>>>(
-        builder: (context, state) => switch (state) {
-          BaseStateLoading<List<Offer>>() => const CircularProgressIndicator(),
-          BaseStateError<List<Offer>>(message: final message) =>
-            Text('error: $message'),
-          BaseStateData<List<Offer>>(data: final offers) =>
-            OffersFeed(offers: offers),
-        },
+      child: SizedBox(
+        height: 213.2,
+        child: BlocBuilder<OfferCubit, BaseState<List<Offer>>>(
+          builder: (context, state) => switch (state) {
+            BaseStateLoading<List<Offer>>() => const CircularProgressIndicator(),
+            BaseStateError<List<Offer>>(message: final message) =>
+              Text('error: $message'),
+            BaseStateData<List<Offer>>(data: final offers) =>
+              OffersFeed(offers: offers),
+          },
+        ),
       ),
     );
   }
