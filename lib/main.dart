@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_test_job_08_05_2024/pages/main_page.dart';
+import 'package:flutter_test_job_08_05_2024/presentation/pages/main_page.dart';
 
 void main() => runApp(const BottomNavigationBarExampleApp());
 
@@ -70,35 +70,45 @@ class _MenuState extends State<Menu> {
           BottomNavigationBarItem(
             icon: SvgPicture.asset("assets/icon/flights.svg",
                 colorFilter: ColorFilter.mode(
-                    _selectedIndex == 0 ? const Color(0xFF2261BC):const Color(0xff5E5F61),
+                    _selectedIndex == 0
+                        ? const Color(0xFF2261BC)
+                        : const Color(0xff5E5F61),
                     BlendMode.srcIn)),
             label: 'Авиабилеты',
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset("assets/icon/hotels.svg",
                 colorFilter: ColorFilter.mode(
-                    _selectedIndex == 1 ?const Color(0xFF2261BC):const Color(0xff5E5F61),
+                    _selectedIndex == 1
+                        ? const Color(0xFF2261BC)
+                        : const Color(0xff5E5F61),
                     BlendMode.srcIn)),
             label: 'Отели',
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset("assets/icon/short.svg",
                 colorFilter: ColorFilter.mode(
-                    _selectedIndex == 2 ? const Color(0xFF2261BC):const Color(0xff5E5F61),
+                    _selectedIndex == 2
+                        ? const Color(0xFF2261BC)
+                        : const Color(0xff5E5F61),
                     BlendMode.srcIn)),
             label: 'Короче',
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset("assets/icon/subscriptions.svg",
                 colorFilter: ColorFilter.mode(
-                    _selectedIndex == 3 ? const Color(0xFF2261BC):const Color(0xff5E5F61),
+                    _selectedIndex == 3
+                        ? const Color(0xFF2261BC)
+                        : const Color(0xff5E5F61),
                     BlendMode.srcIn)),
             label: 'Подписки',
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset("assets/icon/profile.svg",
                 colorFilter: ColorFilter.mode(
-                    _selectedIndex == 4 ? const Color(0xFF2261BC):const Color(0xff5E5F61) ,
+                    _selectedIndex == 4
+                        ? const Color(0xFF2261BC)
+                        : const Color(0xff5E5F61),
                     BlendMode.srcIn)),
             label: "Профиль",
           ),

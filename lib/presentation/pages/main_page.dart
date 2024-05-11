@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_test_job_08_05_2024/pages/%D0%BCodal_page.dart';
+import 'package:flutter_test_job_08_05_2024/presentation/component/offers_feed/offers_component.dart';
+import 'package:flutter_test_job_08_05_2024/presentation/pages/modal_page.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
@@ -51,6 +52,7 @@ class MainPage extends StatelessWidget {
           SizedBox(
             height: 16,
           ),
+          OffersComponent(),
           _ButtonPlaces(),
         ],
       ),
@@ -59,7 +61,7 @@ class MainPage extends StatelessWidget {
 }
 
 class _SearchBar extends StatelessWidget {
-  const _SearchBar({super.key});
+  const _SearchBar();
 
   @override
   Widget build(BuildContext context) {
@@ -133,7 +135,7 @@ class _SearchBar extends StatelessWidget {
 }
 
 class _ButtonPlaces extends StatelessWidget {
-  const _ButtonPlaces({super.key});
+  const _ButtonPlaces();
 
   @override
   Widget build(BuildContext context) {
