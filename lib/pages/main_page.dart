@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_test_job_08_05_2024/pages/%D0%BCodal_page.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
@@ -24,7 +25,33 @@ class MainPage extends StatelessWidget {
               height: 26.4 / 22,
             ),
           ),
-          _SearchBar()
+          SizedBox(
+            height: 36,
+          ),
+          _SearchBar(),
+          SizedBox(
+            height: 32,
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Музыкально отлететь",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color(0xFFD9D9D9),
+                  fontSize: 22,
+                  fontFamily: 'SF Pro Display',
+                  fontWeight: FontWeight.w600,
+                  height: 26.4 / 22,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 16,
+          ),
+          _ButtonPlaces(),
         ],
       ),
     );
@@ -42,37 +69,88 @@ class _SearchBar extends StatelessWidget {
         color: const Color(0xff2F3035),
         borderRadius: BorderRadius.circular(16),
       ),
-      child: Container(
-        decoration: BoxDecoration(
-            color: const Color(0xff3E3F43),
-            borderRadius: BorderRadius.circular(16),
-            boxShadow: const [
-              BoxShadow(
-                color: Color(0x3F000000),
-                spreadRadius: 5,
-                blurRadius: 7,
-                offset: Offset(0, 3),
+      child: GestureDetector(
+        onTap: () {
+          showModalBottomSheet(
+              context: context,
+              backgroundColor: const Color(0xff242529),
+              builder: (BuildContext context) {
+                return const ModalPages();
+              });
+        },
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+          decoration: BoxDecoration(
+              color: const Color(0xff3E3F43),
+              borderRadius: BorderRadius.circular(16),
+              boxShadow: const [
+                BoxShadow(
+                  color: Color(0x3F000000),
+                  spreadRadius: 5,
+                  blurRadius: 4,
+                  offset: Offset(0, 4),
+                ),
+              ]),
+          child: Row(
+            children: [
+              SvgPicture.asset("assets/icon/search.svg"),
+              const SizedBox(
+                width: 20,
               ),
-            ]),
-        child: const Row(
-          children: [
-            Column(
-              children: [
-                Text(
-                  "Минск",
-                  style: TextStyle(
-                    color: Color(0xFFFFFFFF),
-                    fontSize: 16,
-                    fontFamily: 'SF Pro Display',
-                    fontWeight: FontWeight.w600,
-                    height: 20.8 / 16,
-                  ),
-                )
-              ],
-            )
-          ],
+              const Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Минск",
+                      style: TextStyle(
+                        color: Color(0xFFFFFFFF),
+                        fontSize: 16,
+                        fontFamily: 'SF Pro Display',
+                        fontWeight: FontWeight.w600,
+                        height: 20.8 / 16,
+                      ),
+                    ),
+                    Text(
+                      "Куда - Турция",
+                      style: TextStyle(
+                        color: Color(0xFFFFFFFF),
+                        fontSize: 16,
+                        fontFamily: 'SF Pro Display',
+                        fontWeight: FontWeight.w600,
+                        height: 20.8 / 16,
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
+  }
+}
+
+class _ButtonPlaces extends StatelessWidget {
+  const _ButtonPlaces({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        padding: const EdgeInsets.symmetric(horizontal: 84, vertical: 11),
+        decoration: BoxDecoration(
+          color: const Color(0xFF2F3035),
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: const Text(
+          "Показать все места",
+          style: TextStyle(
+            color: Color(0xFFFFFFFF),
+            fontSize: 16,
+            fontFamily: 'SF Pro Display',
+            height: 20.8 / 16,
+          ),
+        ));
   }
 }
