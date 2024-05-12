@@ -1,138 +1,48 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
-
-import '../../component/offers_feed/offers_component.dart';
-import '../modal_page.dart';
+import 'package:flutter_test_job_08_05_2024/presentation/component/offers_feed/offers_component.dart';
+import 'package:flutter_test_job_08_05_2024/presentation/pages/air_ticket/widget/search_button.dart';
+import 'package:flutter_test_job_08_05_2024/presentation/ui_kit/text_styles.dart';
 
 class AirTicketPage extends StatelessWidget {
   const AirTicketPage({super.key});
 
   @override
-  Widget build(BuildContext context) => Container(
-    padding: const EdgeInsets.symmetric(horizontal: 16),
-    child: const Column(
-      children: [
-        SizedBox(
-          height: 28,
-        ),
-        Text(
-          "Поиск дешёвых авиабилетов",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Color(0xFFD9D9D9),
-            fontSize: 22,
-            fontFamily: 'SF Pro Display',
-            fontWeight: FontWeight.w600,
-            height: 26.4 / 22,
-          ),
-        ),
-        SizedBox(
-          height: 36,
-        ),
-        _SearchBar(),
-        SizedBox(
-          height: 32,
-        ),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Музыкально отлететь",
+  Widget build(BuildContext context) => Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 28, 16, 36),
+            child: Text(
+              'Поиск дешевых\nавиабилетов',
               textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Color(0xFFD9D9D9),
-                fontSize: 22,
-                fontFamily: 'SF Pro Display',
-                fontWeight: FontWeight.w600,
-                height: 26.4 / 22,
-              ),
+              style: TextStyles.title1.copyWith(color: const Color(0xffD9D9D9)),
             ),
-          ],
-        ),
-        SizedBox(
-          height: 16,
-        ),
-        OffersComponent(),
-        _ButtonPlaces(),
-      ],
-    ),
-  );
-}
-
-
-class _SearchBar extends StatelessWidget {
-  const _SearchBar();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-      decoration: BoxDecoration(
-        color: const Color(0xff2F3035),
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: GestureDetector(
-        onTap: () {
-          showModalBottomSheet(
-              context: context,
-              backgroundColor: const Color(0xff242529),
-              builder: (BuildContext context) {
-                return const ModalPages();
-              });
-        },
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-          decoration: BoxDecoration(
-              color: const Color(0xff3E3F43),
-              borderRadius: BorderRadius.circular(16),
-              boxShadow: const [
-                BoxShadow(
-                  color: Color(0x3F000000),
-                  spreadRadius: 5,
-                  blurRadius: 4,
-                  offset: Offset(0, 4),
-                ),
-              ]),
-          child: Row(
-            children: [
-              SvgPicture.asset("assets/icon/search.svg"),
-              const SizedBox(
-                width: 20,
-              ),
-              const Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Минск",
-                      style: TextStyle(
-                        color: Color(0xFFFFFFFF),
-                        fontSize: 16,
-                        fontFamily: 'SF Pro Display',
-                        fontWeight: FontWeight.w600,
-                        height: 20.8 / 16,
-                      ),
-                    ),
-                    Text(
-                      "Куда - Турция",
-                      style: TextStyle(
-                        color: Color(0xFFFFFFFF),
-                        fontSize: 16,
-                        fontFamily: 'SF Pro Display',
-                        fontWeight: FontWeight.w600,
-                        height: 20.8 / 16,
-                      ),
-                    )
-                  ],
-                ),
-              )
-            ],
           ),
-        ),
-      ),
-    );
-  }
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: SearchButton(),
+          ),
+          const SizedBox(height: 32),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Музыкально отлететь',
+                  textAlign: TextAlign.center,
+                  style: TextStyles.title1.copyWith(
+                    color: const Color(0xFFD9D9D9),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 16),
+          const OffersComponent(),
+          const _ButtonPlaces(),
+        ],
+      );
 }
 
 class _ButtonPlaces extends StatelessWidget {

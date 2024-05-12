@@ -10,6 +10,7 @@ class OffersFeed extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+      padding: const EdgeInsets.symmetric(horizontal: 12),
       scrollDirection: Axis.horizontal,
       itemCount: offers.length,
       itemBuilder: (_, index) => OfferWidget(offer: offers[index]),

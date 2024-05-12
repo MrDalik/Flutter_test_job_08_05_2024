@@ -9,13 +9,16 @@ class OfferWidget extends StatelessWidget {
 
   const OfferWidget({super.key, required this.offer});
 
+  String get _image =>
+      _assetPathToOfferIdMap[offer.id] ?? 'assets/jpg/offer_1.jpg';
+
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Image.asset(
-          'assets/jpg/offer_1.jpg',
+          _image,
           width: 132,
           height: 133.2,
         ),
@@ -58,3 +61,9 @@ class OfferWidget extends StatelessWidget {
     );
   }
 }
+
+Map<int, String> _assetPathToOfferIdMap = {
+  1: 'assets/jpg/offer_1.jpg',
+  2: 'assets/jpg/offer_2.jpg',
+  3: 'assets/jpg/offer_3.jpg',
+};
