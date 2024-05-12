@@ -18,11 +18,16 @@ class RootPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: navigationShell,
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: navigationShell.currentIndex,
-        destinations: items
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: const Color(0xFF2261BC),
+        unselectedItemColor: const Color(0xFF9F9F9F),
+        backgroundColor: const Color(0xFF0c0c0c),
+        selectedLabelStyle: const TextStyle(fontSize: 10),
+        unselectedLabelStyle: const TextStyle(fontSize: 10),
+        items: items
             .mapIndexed(
-              (index, item) => NavigationDestination(
+              (index, item) => BottomNavigationBarItem(
                 label: item.title,
                 icon: SvgPicture.asset(
                   item.iconPath,
@@ -36,7 +41,7 @@ class RootPage extends StatelessWidget {
               ),
             )
             .toList(),
-        onDestinationSelected: navigationShell.goBranch,
+        onTap: navigationShell.goBranch,
       ),
     );
   }
