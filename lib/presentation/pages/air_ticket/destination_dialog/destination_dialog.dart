@@ -1,28 +1,40 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_test_job_08_05_2024/presentation/bloc/order/order_cubit.dart';
+import 'package:flutter_test_job_08_05_2024/presentation/bloc/order/order_state.dart';
 import 'package:flutter_test_job_08_05_2024/presentation/pages/air_ticket/destination_dialog/destination_dialog_hint.dart';
 import 'package:flutter_test_job_08_05_2024/presentation/pages/air_ticket/destination_dialog/destination_dialog_recommendation.dart';
 import 'package:flutter_test_job_08_05_2024/presentation/pages/air_ticket/widget/search_input.dart';
 
 class DestinationDialog extends StatelessWidget {
-  const DestinationDialog({super.key});
+  final OrderState order;
+
+  const DestinationDialog({super.key, required this.order});
 
   @override
   Widget build(BuildContext context) {
+    final orderCubit = context.read<OrderCubit>();
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const Padding(
-          padding: EdgeInsets.fromLTRB(16, 8, 16, 0),
-          child: SearchInput(),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+          child: SearchInput(
+            departureCity: order.departureCity,
+            destinationCity: order.destinationCity,
+            onDepartureCityChanged: orderCubit.setDepartureCity,
+            onDestinationCityChanged: orderCubit.setDestinationCity,
+          ),
         ),
         const SizedBox(height: 24),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(
+              const Expanded(
                 child: DestinationDialogHint(
                   text: 'Сложный маршрут',
                   iconBgColor: Color(0xff3A633B),
@@ -32,18 +44,21 @@ class DestinationDialog extends StatelessWidget {
               Expanded(
                 child: DestinationDialogHint(
                   text: 'Куда угодно',
-                  iconBgColor: Color(0xff2261BC),
+                  iconBgColor: const Color(0xff2261BC),
                   iconPath: 'assets/icon/planet.svg',
+                  onPressed: () {
+                    orderCubit.setDestinationCity('Куда угодно');
+                  },
                 ),
               ),
-              Expanded(
+              const Expanded(
                 child: DestinationDialogHint(
                   text: 'Выходные',
                   iconBgColor: Color(0xff00427D),
                   iconPath: 'assets/icon/сalendar.svg',
                 ),
               ),
-              Expanded(
+              const Expanded(
                 child: DestinationDialogHint(
                   text: 'Горячие билеты',
                   iconBgColor: Color(0xffFF5E5E),

@@ -6,43 +6,48 @@ class DestinationDialogHint extends StatelessWidget {
   final String text;
   final String iconPath;
   final Color iconBgColor;
+  final VoidCallback? onPressed;
 
   const DestinationDialogHint({
     super.key,
     required this.text,
     required this.iconPath,
     required this.iconBgColor,
+    this.onPressed,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          width: 48,
-          height: 48,
-          decoration: BoxDecoration(
-            color: iconBgColor,
-            borderRadius: BorderRadius.circular(8),
-          ),
-          alignment: Alignment.center,
-          child: SvgPicture.asset(
-            iconPath,
-            width: 24,
-            height: 24,
-            colorFilter: const ColorFilter.mode(
-              Colors.white,
-              BlendMode.srcIn,
+    return GestureDetector(
+      onTap: onPressed,
+      child: Column(
+        children: [
+          Container(
+            width: 48,
+            height: 48,
+            decoration: BoxDecoration(
+              color: iconBgColor,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            alignment: Alignment.center,
+            child: SvgPicture.asset(
+              iconPath,
+              width: 24,
+              height: 24,
+              colorFilter: const ColorFilter.mode(
+                Colors.white,
+                BlendMode.srcIn,
+              ),
             ),
           ),
-        ),
-        const SizedBox(height: 8),
-        Text(
-          text,
-          style: TextStyles.text2.copyWith(color: Colors.white),
-          textAlign: TextAlign.center,
-        ),
-      ],
+          const SizedBox(height: 8),
+          Text(
+            text,
+            style: TextStyles.text2.copyWith(color: Colors.white),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
     );
   }
 }
