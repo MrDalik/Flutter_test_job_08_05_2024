@@ -15,7 +15,15 @@ class DestinationDialogRecommendation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 56,
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      decoration: const BoxDecoration(
+        border: Border(
+          bottom: BorderSide(
+            width: 1,
+            color: Color(0xff3E3F43),
+          ),
+        ),
+      ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -25,6 +33,7 @@ class DestinationDialogRecommendation extends StatelessWidget {
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(imagePath),
+                fit: BoxFit.cover,
               ),
               borderRadius: BorderRadius.circular(8),
             ),

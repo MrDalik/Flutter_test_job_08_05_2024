@@ -63,10 +63,21 @@ class DestinationDialog extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
             ),
             child: const Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 DestinationDialogRecommendation(
                   cityName: 'Стамбул',
-                  imagePath: 'assets/jpg/offer_1.jpg',
+                  imagePath: 'assets/jpg/stambul.jpg',
+                ),
+                SizedBox(height: 8),
+                DestinationDialogRecommendation(
+                  cityName: 'Сочи',
+                  imagePath: 'assets/jpg/sohi.jpg',
+                ),
+                SizedBox(height: 8),
+                DestinationDialogRecommendation(
+                  cityName: 'Пхукет',
+                  imagePath: 'assets/jpg/phuket.jpg',
                 ),
               ],
             ),
